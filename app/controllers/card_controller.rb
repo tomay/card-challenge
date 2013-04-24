@@ -1,17 +1,17 @@
 class CardController < ApplicationController
   def get_cardtype(cardstring)
-  	cardstring = cardstring.gsub(" ","")
-	if cardstring.slice(0) == "4" && (cardstring.length == 13 || cardstring.length == 16)
-	  cardtype = "VISA" 
-	elsif cardstring.length == 15 && (cardstring.slice(0..1) == "34" || cardstring.slice(0..1) == "37")
-	  cardtype = "AMEX" 
-	elsif cardstring.length == 16 && (51..55).member?(cardstring.slice(0..1).to_i)
-	  cardtype = "MasterCard" 
-	elsif cardstring.slice(0..3) == "6011" && cardstring.length == 16
-	  cardtype = "Discover"
-	else 
-	  cardtype = "Unknown"
-	end
+    cardstring = cardstring.gsub(" ","")
+    if cardstring.slice(0) == "4" && (cardstring.length == 13 || cardstring.length == 16)
+      cardtype = "VISA" 
+    elsif cardstring.length == 15 && (cardstring.slice(0..1) == "34" || cardstring.slice(0..1) == "37")
+      cardtype = "AMEX" 
+    elsif cardstring.length == 16 && (51..55).member?(cardstring.slice(0..1).to_i)
+      cardtype = "MasterCard" 
+    elsif cardstring.slice(0..3) == "6011" && cardstring.length == 16
+      cardtype = "Discover"
+    else 
+      cardtype = "Unknown"
+    end
   end
 
   def luhn_validation(cardstring)
